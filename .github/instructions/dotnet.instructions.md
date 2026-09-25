@@ -16,3 +16,4 @@ If `async` is mentioned in a task or prompt, it always means that any methods re
 
 When working in a solution that contains a WPF project, do not use `ConfigureAwait()` with any async method. Using `await asyncTask.ConfigureAwait(false);` in a method poses a risk that if the WPF project is reliant on that async method, there's a chance the WPF project could run into an exception because the thread chosen by `ConfigureAwait(false)` wasn't the UI thread. Adding `ConfigureAwait(true)` to an awaited method call is redundant as that's the default behavior.
 
+When creating private fields for classes, services, etc., always use the `this` keyword over a leading underscore: `this.httpClient` instead of `_httpClient`.
